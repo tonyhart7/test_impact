@@ -14,7 +14,29 @@ class MobileHomePage extends StatelessWidget {
       child: const Scaffold(
         body: _HomeBody(),
         bottomNavigationBar: _HomeNav(),
+        floatingActionButton: _HomeFab(),
       ),
+    );
+  }
+}
+
+class _HomeFab extends StatelessWidget {
+  const _HomeFab({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
+      buildWhen: (previous, current) => previous.page != current.page,
+      builder: (context, state) {
+        return state.page == BottomNav.home
+            ? FloatingActionButton(
+                onPressed: () {},
+                child: const Icon(Icons.add),
+              )
+            : const SizedBox.shrink();
+      },
     );
   }
 }

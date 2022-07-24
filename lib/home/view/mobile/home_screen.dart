@@ -5,8 +5,39 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('HomeScreen'),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          bottom: const TabBar(
+            tabs: [
+              Tab(text: 'Open'),
+              Tab(text: 'Complete'),
+            ],
+          ),
+          title: const Text(
+            'Activities',
+          ),
+          centerTitle: true,
+        ),
+        body: TabBarView(
+          children: [
+            Container(
+              height: 200,
+              width: 500,
+              color: Colors.lightGreen,
+              child: const Text('Ongoing'),
+            ),
+            Container(
+              height: 200,
+              width: 500,
+              color: Colors.redAccent,
+              child: const Text('Complete'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
