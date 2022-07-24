@@ -1,46 +1,91 @@
 part of 'package:test_impact/home/home.dart';
 
-class MobileHomePage extends StatefulWidget {
+class MobileHomePage extends StatelessWidget {
   const MobileHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MobileHomePage> createState() => _MobileHomePageState();
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<BottomNavigationCubit>(
+          create: (context) => BottomNavigationCubit(),
+        ),
+      ],
+      child: const Scaffold(
+        body: _HomeBody(),
+        bottomNavigationBar: _HomeNav(),
+      ),
+    );
+  }
 }
 
-class _MobileHomePageState extends State<MobileHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _HomeBody extends StatelessWidget {
+  const _HomeBody({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Mobile'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
+      buildWhen: (previous, current) => previous.page != current.page,
+      builder: (context, state) {
+        switch (state.page) {
+          case BottomNav.home:
+            return const HomeScreen();
+          case BottomNav.activity:
+            return const ActivityScreen();
+          case BottomNav.orders:
+            return const OrdersScreen();
+          case BottomNav.profile:
+            return const ProfileScreen();
+        }
+      },
+    );
+  }
+}
+
+class _HomeNav extends StatelessWidget {
+  const _HomeNav({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
+      buildWhen: (previous, current) => previous.page != current.page,
+      builder: (context, state) {
+        return BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.schedule_rounded,
+              ),
+              label: 'My Activity',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.book_online_outlined,
+              ),
+              label: 'Orders',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_sharp),
+              label: 'My Profile',
             ),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+          currentIndex: state.index,
+          type: BottomNavigationBarType.fixed,
+          onTap: (index) {
+            context.read<BottomNavigationCubit>().navigateTo(index);
+          },
+        );
+      },
     );
   }
 }
