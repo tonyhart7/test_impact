@@ -54,4 +54,6 @@ class RemarksChanged extends AddActivityEvent {
 
 class ActivitySubmit extends AddActivityEvent {
   const ActivitySubmit();
+  @override
+  List<Object> get props => [];
 }

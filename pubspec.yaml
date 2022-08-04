@@ -23,6 +23,7 @@ dependencies:
   isar: ^0.0.0
   dropdown_search: ^5.0.2
   very_good_infinite_list: ^0.4.1
+  lottie: ^1.4.1
 
 dev_dependencies:
   flutter_test:
