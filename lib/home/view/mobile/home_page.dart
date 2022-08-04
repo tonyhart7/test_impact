@@ -32,7 +32,13 @@ class _HomeFab extends StatelessWidget {
       builder: (context, state) {
         return state.page == BottomNav.home
             ? FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AddActivityPage()),
+                  );
+                },
                 child: const Icon(Icons.add),
               )
             : const SizedBox.shrink();

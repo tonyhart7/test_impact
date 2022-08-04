@@ -3,7 +3,7 @@ part of 'app_utils.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class GlobalAPIKey {
-  String baseUrl = 'https://tonyhart7.dev:3000/';
+  String baseUrl = 'https://tonyhart7.dev:3000';
 
   Future<String?> getAccessKey() async {
     final prefs = await _prefs;

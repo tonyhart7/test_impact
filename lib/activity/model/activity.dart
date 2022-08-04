@@ -118,3 +118,32 @@ class ActivityRecord {
         remarks.hashCode;
   }
 }
+
+List<ActivityRecord> dumbActivity = [
+  ActivityRecord(
+    id: 21,
+    activityType: 'meeting',
+    institution: 'CV Anugrah Jaya',
+    when: DateTime.now(),
+    objective: 'New Order',
+    remarks: 'ada order twinlight',
+  ),
+  ActivityRecord(
+    id: 21,
+    activityType: 'meeting',
+    institution: 'PT ANT',
+    when: DateTime(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day + 1),
+    objective: 'Relocation',
+    remarks: 'martapura new site',
+  ),
+  ActivityRecord(
+    id: 21,
+    activityType: 'meeting',
+    institution: 'PT Sampoerna',
+    when: DateTime(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day - 1),
+    objective: 'Audit',
+    remarks: 'audit Q4',
+  ),
+];

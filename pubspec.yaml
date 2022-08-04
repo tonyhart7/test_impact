@@ -20,6 +20,9 @@ dependencies:
   shared_preferences: ^2.0.15
   equatable: ^2.0.3
   intl: ^0.17.0
+  isar: ^0.0.0
+  dropdown_search: ^5.0.2
+  very_good_infinite_list: ^0.4.1
 
 dev_dependencies:
   flutter_test:

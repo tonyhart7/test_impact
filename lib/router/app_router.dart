@@ -5,7 +5,21 @@ class MobileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: MobileHomePage());
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: child,
+        );
+      },
+      child: const MobileHomePage(),
+    );
   }
 }
 
