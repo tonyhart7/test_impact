@@ -236,7 +236,7 @@ class _ObjectiveInput extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: Text(
-                'when do you want to meet/call ?',
+                'why do you want to meet/call ?',
                 style: AppStyle.textBody,
               ),
             ),
@@ -278,7 +278,7 @@ class _RemarksInput extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: Text(
-                'when do you want to meet/call ?',
+                'could you describe it more detail ?',
                 style: AppStyle.textBody,
               ),
             ),
